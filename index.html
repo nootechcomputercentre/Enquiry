@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Contact NootechComputers for online & offline computer coaching and training enquiries."
+    >
+
+    <title>NootechComputers | Class Enquiry</title>
+
+    <link
+        rel="stylesheet"
+        href="assets/style.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div class="background-effects">
+
+        <div class="orb orb-one"></div>
+
+        <div class="orb orb-two"></div>
+
+        <div class="grid-overlay"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN CONTAINER
+    ====================================================== -->
+
+    <main class="page-container">
+
+
+        <!-- =================================================
+             FORM CARD
+        ================================================== -->
+
+        <section class="enquiry-card">
+
+
+            <!-- =============================================
+                 BRAND HEADER
+            ============================================== -->
+
+            <header class="form-header">
+
+                <div class="brand-icon">
+                    <span>NTC</span>
+                </div>
+
+
+                <div class="brand-text">
+
+                    <h1>
+                        Nootech<span>Computer</span>
+                    </h1>
+
+                    <p>
+                        Learn. Today. Lead.Tomorrow.
+                    </p>
+
+                </div>
+
+            </header>
+
+
+            <!-- =============================================
+                 TITLE
+            ============================================== -->
+
+            <div class="form-intro">
+
+                <div class="intro-badge">
+                    🎓 COURSE ENQUIRY
+                </div>
+
+                <h2>
+                    Let's Start Your
+                    <span>Career Skills Journey</span>
+                </h2>
+
+                <p>
+                    Fill in the details below and our team
+                    will contact you shortly.
+                </p>
+
+            </div>
+
+
+            <!-- =============================================
+                 FORM
+            ============================================== -->
+
+            <form
+                id="enquiryForm"
+                novalidate
+            >
+
+
+                <!-- =========================================
+                     PERSONAL INFORMATION
+                ========================================== -->
+
+                <div class="section-heading">
+
+                    <div class="section-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Personal Information
+                        </h3>
+
+                        <p>
+                            Tell us about the student
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- Student Name -->
+
+                    <div class="form-group">
+
+                        <label for="studentName">
+
+                            Student Name
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                👤
+                            </span>
+
+                            <input
+                                type="text"
+                                id="studentName"
+                                name="studentName"
+                                placeholder="Enter student full name"
+                                autocomplete="name"
+                                maxlength="100"
+                                required
+                            >
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="studentNameError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Guardian Name -->
+
+                    <div class="form-group">
+
+                        <label for="guardianName">
+
+                            Guardian Name
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                👨‍👩‍👧
+                            </span>
+
+                            <input
+                                type="text"
+                                id="guardianName"
+                                name="guardianName"
+                                placeholder="Enter guardian full name"
+                                maxlength="100"
+                                required
+                            >
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="guardianNameError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Guardian Type -->
+
+                    <div class="form-group">
+
+                        <label for="guardianType">
+
+                            Guardian Type
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                👪
+                            </span>
+
+                            <select
+                                id="guardianType"
+                                name="guardianType"
+                                required
+                            >
+
+                                <option value="">
+                                    Select guardian type
+                                </option>
+
+                                <option value="Father">
+                                    Father
+                                </option>
+
+                                <option value="Mother">
+                                    Mother
+                                </option>
+
+                                <option value="Brother">
+                                    Brother
+                                </option>
+
+                                <option value="Sister">
+                                    Sister
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                            <span class="select-arrow">
+                                ▼
+                            </span>
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="guardianTypeError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Mobile -->
+
+                    <div class="form-group">
+
+                        <label for="mobile">
+
+                            Mobile Number
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                📱
+                            </span>
+
+                            <input
+                                type="tel"
+                                id="mobile"
+                                name="mobile"
+                                placeholder="Enter your mobile number"
+                                inputmode="numeric"
+                                maxlength="10"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+                        <small class="field-hint">
+                            For future communication
+                        </small>
+
+                        <small
+                            class="error-message"
+                            id="mobileError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Email -->
+
+                    <div class="form-group full-width">
+
+                        <label for="email">
+
+                            Email Address
+                            <span class="optional">
+                                Optional
+                            </span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ✉️
+                            </span>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                                maxlength="150"
+                            >
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="emailError"
+                        ></small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     COURSE INFORMATION
+                ========================================== -->
+
+                <div class="section-heading section-space">
+
+                    <div class="section-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Course Information
+                        </h3>
+
+                        <p>
+                            Tell us about your skills requirement
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- Class -->
+
+                    <div class="form-group full-width">
+
+                        <label for="classEnquiryFor">
+
+                            Course Enquiry For
+                            <span>*</span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🎓
+                            </span>
+
+                            <select
+                                id="courseEnquiryFor"
+                                name="courseEnquiryFor"
+                                required
+                            >
+
+                                <option value="">
+                                    Select course
+                                </option>
+
+                                <option value="OSCIT">
+                                    OSCIT
+                                </option>
+
+                                <option value="CCC/NIELIT">
+                                    CCC/NIELIT
+                                </option>
+
+                                <option value="CCC+/NIELIT">
+                                    CCC+/NIELIT
+                                </option>
+
+                                <option value="ECC/NIELIT">
+                                   ECC/NIELIT
+                                </option>
+
+                                <option value=" DCA">
+                                    DCA
+                                </option>
+
+                                <option value="Tally Prime With GST">
+                                    Tally Prime With GST
+                                </option>
+								<option value="APGDCA">
+                                    APGDCA
+                                </option>
+								<option value="TYPING SKILLS">
+                                    TYPING SKILLS
+                                </option>
+
+                            </select>
+
+                            <span class="select-arrow">
+                                ▼
+                            </span>
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="courseEnquiryForError"
+                        ></small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     TRAINING TYPE
+                ========================================== -->
+
+                <div class="section-heading section-space">
+
+                    <div class="section-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Batch Type
+                        </h3>
+
+                        <p>
+                            Choose your preferred Batch format
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="batch-options">
+
+
+                    <label
+                        class="batch-option"
+                        for="Morning"
+                    >
+
+                        <input
+                            type="radio"
+                            id="Morning"
+                            name="batchType"
+                            value="Morning"
+                        >
+
+                        <div class="radio-card">
+
+                            <div class="batch-icon">
+                                👨‍🏫
+                            </div>
+
+                            <div class="batch-content">
+
+                                <strong>
+                                    Morning
+                                </strong>
+
+                                <span>
+                                    Before College Timing
+                                </span>
+
+                            </div>
+
+                            <div class="radio-indicator"></div>
+
+                        </div>
+
+                    </label>
+
+
+                    <label
+                        class="batch-option"
+                        for="Evening"
+                    >
+
+                        <input
+                            type="radio"
+                            id="Evening"
+                            name="batchType"
+                            value="Evening"
+                        >
+
+                        <div class="radio-card">
+
+                            <div class="batch-icon">
+                                👥
+                            </div>
+
+                            <div class="batch-content">
+
+                                <strong>
+                                    Evening
+                                </strong>
+
+                                <span>
+                                    After College Timing
+                                </span>
+
+                            </div>
+
+                            <div class="radio-indicator"></div>
+
+                        </div>
+
+                    </label>
+
+                </div>
+
+                <small
+                    class="error-message batch-error"
+                    id="batchTypeError"
+                ></small>
+
+
+                <!-- =========================================
+                     LOCATION
+                ========================================== -->
+
+                <div class="section-heading section-space">
+
+                    <div class="section-number">
+                        04
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Location
+                        </h3>
+
+                        <p>
+                            Where are you located?
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="location">
+
+                        Your Location
+
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            📍
+                        </span>
+
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="Enter your location"
+                            maxlength="200"
+                            autocomplete="address-level2"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     ENQUIRY MESSAGE
+                ========================================== -->
+
+                <div class="form-group message-group">
+
+                    <label for="enquiryMessage">
+
+                        Your Enquiry
+
+                    </label>
+
+                    <div class="textarea-wrapper">
+
+                        <textarea
+                            id="enquiryMessage"
+                            name="enquiryMessage"
+                            placeholder="Tell us what you would like to know..."
+                            maxlength="1000"
+                            rows="5"
+                        ></textarea>
+
+                        <span
+                            class="character-counter"
+                            id="characterCounter"
+                        >
+                            0 / 1000
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     HIDDEN SOURCE
+                ========================================== -->
+
+                <input
+                    type="hidden"
+                    name="source"
+                    value="Facebook"
+                >
+
+
+                <!-- =========================================
+                     SUBMIT AREA
+                ========================================== -->
+
+                <div class="submit-area">
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                        id="submitButton"
+                    >
+
+                        <span
+                            class="button-text"
+                            id="buttonText"
+                        >
+                            SEND ENQUIRY
+                        </span>
+
+                        <span class="button-icon">
+                            🚀
+                        </span>
+
+                        <span
+                            class="loading-spinner"
+                            id="loadingSpinner"
+                        ></span>
+
+                    </button>
+
+
+                    <p class="privacy-note">
+                        🔒 Your information is securely submitted
+                        for enquiry purposes only.
+                    </p>
+
+                </div>
+
+
+            </form>
+
+
+            <!-- =============================================
+                 SUCCESS SCREEN
+            ============================================== -->
+
+            <div
+                class="success-screen"
+                id="successScreen"
+            >
+
+                <div class="success-animation">
+
+                    <div class="success-circle">
+
+                        <span>
+                            ✓
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="success-badge">
+                    ENQUIRY RECEIVED
+                </div>
+
+
+                <h2>
+                    Thank You! 🎉
+                </h2>
+
+
+                <p>
+                    Your enquiry has been submitted
+                    successfully.
+                </p>
+
+
+                <div class="enquiry-id-box">
+
+                    <span>
+                        YOUR ENQUIRY ID
+                    </span>
+
+                    <strong id="successEnquiryId">
+                        NTC-ENQ-XXXXXXXX-0000
+                    </strong>
+
+                </div>
+
+
+                <p class="success-message">
+
+                    Our team will contact you shortly.
+                    Please keep your Enquiry ID for
+                    future communication.
+
+                </p>
+
+
+                <button
+                    type="button"
+                    class="new-enquiry-button"
+                    id="newEnquiryButton"
+                >
+
+                    Submit Another Enquiry
+
+                </button>
+
+            </div>
+
+
+            <!-- =============================================
+                 FOOTER
+            ============================================== -->
+
+            <footer class="form-footer">
+
+                <span>
+                    💻 Nootech Computer Centre
+                </span>
+
+                <span class="footer-divider">
+                    •
+                </span>
+
+                <span>
+                    Learn. Today. Lead.Tomorrow
+                </span>
+
+            </footer>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================================
+         JAVASCRIPT
+    ================================================= -->
+
+    <script src="assets/script.js"></script>
+
+</body>
+
+</html>
