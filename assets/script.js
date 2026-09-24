@@ -1,5 +1,5 @@
 /* =========================================================
-  Nootech Computer Centre Enquiry Form
+   Nootech Computer Centre Enquiry Form
    DIRECT SUBMISSION CONTROLLER
    ========================================================= */
 
@@ -214,6 +214,173 @@ function initializeEnquiryForm() {
 
 
     /* =====================================================
+       ADD / UPDATE HIDDEN FIELD
+       ===================================================== */
+
+    function addHiddenField(
+        name,
+        value
+    ) {
+
+        /*
+         * Remove duplicate hidden fields with the
+         * same name.
+         *
+         * This is especially important for batchType.
+         */
+
+        const existingInputs =
+            enquiryForm.querySelectorAll(
+                'input[type="hidden"][name="' +
+                name +
+                '"]'
+            );
+
+
+        let input = null;
+
+
+        if (existingInputs.length > 0) {
+
+            input =
+                existingInputs[0];
+
+
+            for (
+                let i = 1;
+                i < existingInputs.length;
+                i++
+            ) {
+
+                existingInputs[i].remove();
+            }
+
+        }
+
+        else {
+
+            input =
+                document.createElement(
+                    "input"
+                );
+
+
+            input.type =
+                "hidden";
+
+
+            input.name =
+                name;
+
+
+            enquiryForm.appendChild(
+                input
+            );
+        }
+
+
+        input.value =
+            value === null ||
+            value === undefined
+                ? ""
+                : String(value);
+    }
+
+
+    /* =====================================================
+       GET BATCH TYPE VALUE
+       ===================================================== */
+
+    function getBatchTypeValue() {
+
+        let value = "";
+
+
+        /*
+         * OPTION 1
+         * Current field:
+         *
+         * name="batchType"
+         */
+
+        const checkedBatchType =
+            document.querySelector(
+                'input[name="batchType"]:checked'
+            );
+
+
+        if (checkedBatchType) {
+
+            value =
+                String(
+                    checkedBatchType.value || ""
+                ).trim();
+        }
+
+
+        /*
+         * OPTION 2
+         * Old field:
+         *
+         * name="trainingType"
+         *
+         * This keeps compatibility with your
+         * previous HTML.
+         */
+
+        if (!value) {
+
+            const checkedTrainingType =
+                document.querySelector(
+                    'input[name="trainingType"]:checked'
+                );
+
+
+            if (checkedTrainingType) {
+
+                value =
+                    String(
+                        checkedTrainingType.value || ""
+                    ).trim();
+            }
+        }
+
+
+        /*
+         * OPTION 3
+         *
+         * select/input with:
+         *
+         * id="batchType"
+         */
+
+        if (!value) {
+
+            const batchTypeElement =
+                document.getElementById(
+                    "batchType"
+                );
+
+
+            if (
+                batchTypeElement &&
+                typeof batchTypeElement.value !==
+                    "undefined"
+            ) {
+
+                value =
+                    String(
+                        batchTypeElement.value || ""
+                    ).trim();
+            }
+        }
+
+
+        return value;
+    }
+
+
+    /* =====================================================
        FORM VALIDATION
        ===================================================== */
 
@@ -382,15 +549,26 @@ function initializeEnquiryForm() {
 
         /* -------------------------------------------------
            BATCH TYPE
+           -------------------------------------------------
+           
+           IMPORTANT:
+           Apps Script expects:
+           
+           batchType
+           
+           This supports:
+           
+           1. name="batchType"
+           2. name="trainingType"
+           3. id="batchType"
+           
            ------------------------------------------------- */
 
-        const batchType =
-            document.querySelector(
-                'input[name="batchType"]:checked'
-            );
+        const batchTypeValue =
+            getBatchTypeValue();
 
 
-        if (!batchType) {
+        if (!batchTypeValue) {
 
             const error =
                 document.getElementById(
@@ -401,62 +579,33 @@ function initializeEnquiryForm() {
             if (error) {
 
                 error.textContent =
-                    "Please select a Batch type.";
+                    "Please select a Batch Type.";
             }
 
 
             valid = false;
+
+        }
+
+        else {
+
+            /*
+             * THIS IS THE CRITICAL FIX.
+             *
+             * Regardless of what the visible HTML
+             * field is called, Apps Script will receive:
+             *
+             * batchType=<selected value>
+             */
+
+            addHiddenField(
+                "batchType",
+                batchTypeValue
+            );
         }
 
 
         return valid;
-    }
-
-
-    /* =====================================================
-       ADD / UPDATE HIDDEN FIELD
-       ===================================================== */
-
-    function addHiddenField(
-        name,
-        value
-    ) {
-
-        let input =
-            enquiryForm.querySelector(
-                'input[type="hidden"][name="' +
-                name +
-                '"]'
-            );
-
-
-        if (!input) {
-
-            input =
-                document.createElement(
-                    "input"
-                );
-
-
-            input.type =
-                "hidden";
-
-
-            input.name =
-                name;
-
-
-            enquiryForm.appendChild(
-                input
-            );
-        }
-
-
-        input.value =
-            value === null ||
-            value === undefined
-                ? ""
-                : String(value);
     }
 
 
@@ -522,8 +671,9 @@ function initializeEnquiryForm() {
         function (event) {
 
             /*
-             * Prevent the default submission temporarily
-             * so validation can run first.
+             * Stop normal submission temporarily.
+             *
+             * Validation is performed first.
              */
 
             event.preventDefault();
@@ -604,15 +754,35 @@ function initializeEnquiryForm() {
 
 
             /* -------------------------------------------------
+               FINAL BATCH TYPE CHECK
+               ------------------------------------------------- */
+
+            const finalBatchType =
+                enquiryForm.querySelector(
+                    'input[type="hidden"][name="batchType"]'
+                );
+
+
+            if (
+                !finalBatchType ||
+                !finalBatchType.value.trim()
+            ) {
+
+                setLoading(false);
+
+
+                alert(
+                    "Batch Type is required. Please select a Batch Type and try again."
+                );
+
+
+                return;
+            }
+
+
+            /* -------------------------------------------------
                DIRECT FORM SUBMISSION
                -------------------------------------------------
-
-               This is the important part.
-
-               The browser sends the form directly to
-               Google Apps Script.
-
-               There is:
 
                NO fetch()
                NO CORS
@@ -621,9 +791,13 @@ function initializeEnquiryForm() {
                NO postMessage()
                NO polling
 
-               Apps Script will save the enquiry and
-               return the Thank You page containing
+               The browser sends the form directly
+               to Google Apps Script.
+
+               Apps Script saves the enquiry and
+               returns the Thank You page containing
                the real Enquiry ID.
+
                ------------------------------------------------- */
 
             enquiryForm.method =
@@ -651,11 +825,9 @@ function initializeEnquiryForm() {
                NATIVE FORM SUBMISSION
                -------------------------------------------------
 
-               We intentionally call the native HTML
-               form submission method.
+               Calling the native prototype prevents
+               the submit event from firing again.
 
-               This prevents the submit event from
-               firing again.
                ------------------------------------------------- */
 
             HTMLFormElement
@@ -674,7 +846,7 @@ function initializeEnquiryForm() {
        ===================================================== */
 
     console.log(
-        "Nootech COmputer Centre Enquiry Form READY - DIRECT POST MODE"
+        "Nootech Computer Centre Enquiry Form READY - DIRECT POST MODE"
     );
 }
 
